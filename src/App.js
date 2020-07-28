@@ -3,7 +3,9 @@ import React from "react";
 import "./App.css";
 import Cards from "./components/Cards/Cards";
 import SearchBar from "./components/SearchBar/SearchBar";
-
+// import Map from "./components/Map/Map";
+import "leaflet/dist/leaflet.css";
+import Chart from "./components/Chart/Chart";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,11 @@ class App extends React.Component {
       recovered: 0,
       deaths: 0,
       lastUpdate: "",
+      mapCenter: {
+        lat: 34.80476,
+        lng: -40.4796,
+      },
+      mapZoom: 3,
     };
   }
   async componentDidMount() {
@@ -36,6 +43,7 @@ class App extends React.Component {
         `https://covid19.mathdro.id/api/countries/${event.target.value}`
       );
       const getCountryData = await getCountryResponse.json();
+      // console.log(getCountryData);
       const confirmed = getCountryData.confirmed.value;
       const recovered = getCountryData.recovered.value;
       const deaths = getCountryData.deaths.value;
@@ -53,15 +61,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <h2 className="Heading">covid-19 tracker</h2>
+
+        <SearchBar
+          handleCountryChange={(event) => this.handleCountryChange(event)}
+        />
         <Cards
           confirmed={confirmed}
           recovered={recovered}
           deaths={deaths}
           lastUpdate={lastUpdate}
         />
-        <SearchBar
-          handleCountryChange={(event) => this.handleCountryChange(event)}
-        />
+        <Chart confirmed={confirmed} recovered={recovered} deaths={deaths} />
+        {/* <Map center={this.state.mapCenter} zoom={this.state.mapZoom} /> */}
       </div>
     );
   }

@@ -1,6 +1,6 @@
 .Cards {
   display: flex;
   justify-content: space-evenly;
-  margin: 50px;
+  margin: 60px;
   flex-wrap: wrap;
 }

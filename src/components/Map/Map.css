@@ -1,0 +1,14 @@
+.Map {
+  height: 500px;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 20px;
+  margin-top: 20px;
+  border: 2px solid #f3f3f3;
+  width: 80%;
+  margin: auto;
+}
+
+.Map .leaflet-container {
+  height: 100%;
+}
