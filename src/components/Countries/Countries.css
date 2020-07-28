@@ -1,0 +1,14 @@
+.Countries {
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  padding: 10px;
+  font-size: 20px;
+  box-sizing: border-box;
+  outline: none;
+  width: 250px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.Countries:focus {
+  border-bottom: 3px solid #121212;
+}
