@@ -34,14 +34,13 @@ class App extends React.Component {
         "https://disease.sh/v3/covid-19/countries"
       );
       const countryData = await countriesResponse.json();
-
-      const countries = countryData.map((country) => country.country);
+      // console.log(countryData);
       // console.log(countries);
 
       const confirmed = data.cases;
       const recovered = data.recovered;
       const deaths = data.deaths;
-      const lastUpdate = data.Date;
+      const lastUpdate = new Date();
       this.setState({
         confirmed,
         recovered,
@@ -52,7 +51,7 @@ class App extends React.Component {
           lng: -40.4796,
         },
         mapZoom: 3,
-        countries: countries,
+        countries: countryData,
       });
     } catch (error) {
       console.log(error);
@@ -100,7 +99,11 @@ class App extends React.Component {
           deaths={deaths}
           lastUpdate={lastUpdate}
         />
-        <Map center={this.state.mapCenter} zoom={this.state.mapZoom} />
+        <Map
+          center={this.state.mapCenter}
+          zoom={this.state.mapZoom}
+          countries={countries}
+        />
         <Chart confirmed={confirmed} recovered={recovered} deaths={deaths} />
       </div>
     );

@@ -8,8 +8,8 @@ const Countries = ({ countries, handleCountryChange }) => {
       <option value="Global">Global</option>
       {countries.map((country, index) => {
         return (
-          <option value={country} key={index}>
-            {country}
+          <option value={country.country} key={index}>
+            {country.country}
           </option>
         );
       })}

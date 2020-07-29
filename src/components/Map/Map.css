@@ -1,5 +1,5 @@
 .Map {
-  height: 500px;
+  height: 600px;
   background-color: #fff;
   padding: 16px;
   border-radius: 20px;
@@ -11,4 +11,26 @@
 
 .Map .leaflet-container {
   height: 100%;
+}
+
+.popup-container {
+  width: 150px;
+}
+.popup-flag {
+  height: 90px;
+  width: 90%;
+  margin: 10px auto;
+  background-size: cover;
+  border-radius: 5px;
+}
+.popup-country {
+  text-align: center;
+  font-size: 20px;
+  color: #121212;
+}
+.popup-cases,
+.popup-recovered,
+.popup-deaths {
+  font-size: 13px;
+  margin-top: 5px;
 }
