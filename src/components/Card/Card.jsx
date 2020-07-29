@@ -3,9 +3,6 @@ import CountUp from "react-countup";
 import "./Card.css";
 
 const Card = ({ value, heading, name, lastUpdate }) => {
-  if (!value) {
-    return <p>Loading....</p>;
-  }
   return (
     <div className={`${name} Card`}>
       <p className="heading">{heading}</p>

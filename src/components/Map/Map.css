@@ -21,6 +21,7 @@
   width: 90%;
   margin: 10px auto;
   background-size: cover;
+  background-position: center;
   border-radius: 5px;
 }
 .popup-country {
@@ -33,4 +34,16 @@
 .popup-deaths {
   font-size: 13px;
   margin-top: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  .Map {
+    height: 50vh;
+    width: 100vw;
+  }
+}
+
+.Map .leaflet-popup-content-wrapper,
+.Map .leaflet-popup-tip {
+  background-color: #f5f5f5;
 }

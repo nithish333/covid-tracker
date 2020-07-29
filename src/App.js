@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import Map from "./components/Map/Map";
 import "leaflet/dist/leaflet.css";
 import Chart from "./components/Chart/Chart";
+import ChartView from "./components/ChartView/ChartView";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,7 @@ class App extends React.Component {
       },
       mapZoom: 3,
       countries: [],
+      chartType: "Bar",
     };
   }
   async componentDidMount() {
@@ -57,6 +59,9 @@ class App extends React.Component {
       console.log(error);
     }
   }
+
+  //? Handle country change
+
   handleCountryChange = async (event) => {
     console.log(event.target.value);
     if (event.target.value !== "Global") {
@@ -83,8 +88,23 @@ class App extends React.Component {
       this.componentDidMount();
     }
   };
+
+  //? Handle chart change
+
+  handleChartChange = (event) => {
+    this.setState({
+      chartType: event.target.value,
+    });
+  };
   render() {
-    const { confirmed, recovered, deaths, lastUpdate, countries } = this.state;
+    const {
+      confirmed,
+      recovered,
+      deaths,
+      lastUpdate,
+      countries,
+      chartType,
+    } = this.state;
     return (
       <div className="App">
         <h2 className="Heading">covid-19 tracker</h2>
@@ -104,7 +124,15 @@ class App extends React.Component {
           zoom={this.state.mapZoom}
           countries={countries}
         />
-        <Chart confirmed={confirmed} recovered={recovered} deaths={deaths} />
+        <ChartView
+          handleChartChange={(event) => this.handleChartChange(event)}
+        />
+        <Chart
+          confirmed={confirmed}
+          recovered={recovered}
+          deaths={deaths}
+          chartType={chartType}
+        />
       </div>
     );
   }

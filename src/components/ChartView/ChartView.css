@@ -1,0 +1,21 @@
+.chartHeading {
+  text-align: center;
+  font-size: 40px;
+  color: #a7a7a7;
+  font-weight: 600;
+  margin-top: 80px;
+}
+.charts {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  border: none;
+  border-bottom: 2px solid #cccccc;
+  padding: 10px;
+  font-size: 20px;
+  outline: none;
+  color: #121212;
+}
+.charts:focus {
+  border-bottom: 3px solid #121212;
+}
