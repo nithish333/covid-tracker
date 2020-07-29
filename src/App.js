@@ -82,7 +82,7 @@ class App extends React.Component {
           lat: getCountryData.countryInfo.lat,
           lng: getCountryData.countryInfo.long,
         },
-        mapZoom: 4,
+        mapZoom: 5,
       });
     } else {
       this.componentDidMount();
@@ -124,6 +124,9 @@ class App extends React.Component {
           zoom={this.state.mapZoom}
           countries={countries}
         />
+        <p className="more">
+          (Click on the circles to know more about the country.)
+        </p>
         <ChartView
           handleChartChange={(event) => this.handleChartChange(event)}
         />
@@ -144,7 +147,7 @@ class App extends React.Component {
             fontSize: "25px",
           }}
         >
-          Created by <b>Nithish</b>
+          Created by <b>Nithish Kommineni</b>
         </p>
       </div>
     );

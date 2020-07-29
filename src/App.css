@@ -16,3 +16,11 @@
   font-size: 40px;
   letter-spacing: 3px;
 }
+
+.more {
+  padding: 10px;
+  text-align: center;
+}
+option {
+  background-color: #ffffff;
+}
