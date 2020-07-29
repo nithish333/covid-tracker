@@ -13,6 +13,9 @@ class App extends React.Component {
       confirmed: 0,
       recovered: 0,
       deaths: 0,
+      newConfirmed: 0,
+      newRecovered: 0,
+      newDeaths: 0,
       lastUpdate: "",
       mapCenter: {
         lat: 34.80476,
@@ -22,12 +25,13 @@ class App extends React.Component {
     };
   }
   async componentDidMount() {
-    const responseFromUrl = await fetch("https://covid19.mathdro.id/api");
+    const responseFromUrl = await fetch("https://api.covid19api.com/summary");
     const data = await responseFromUrl.json();
-    const confirmed = data.confirmed.value;
-    const recovered = data.recovered.value;
-    const deaths = data.deaths.value;
-    const lastUpdate = data.lastUpdate;
+    // console.log(data.Global);
+    const confirmed = data.Global.TotalConfirmed;
+    const recovered = data.Global.TotalRecovered;
+    const deaths = data.Global.TotalDeaths;
+    const lastUpdate = data.Date;
     // console.log(data.confirmed.value);
     // console.log(data);
     this.setState({
@@ -40,13 +44,14 @@ class App extends React.Component {
   handleCountryChange = async (event) => {
     if (event.target.value !== "Global") {
       const getCountryResponse = await fetch(
-        `https://covid19.mathdro.id/api/countries/${event.target.value}`
+        `https://api.covid19api.com/live/country/${event.target.value}/status/confirmed
+        `
       );
       const getCountryData = await getCountryResponse.json();
       // console.log(getCountryData);
-      const confirmed = getCountryData.confirmed.value;
-      const recovered = getCountryData.recovered.value;
-      const deaths = getCountryData.deaths.value;
+      const confirmed = getCountryData[0].Confirmed;
+      const recovered = getCountryData[0].Recovered;
+      const deaths = getCountryData[0].Deaths;
       this.setState({
         confirmed,
         recovered,

@@ -12,12 +12,14 @@ class SearchBar extends React.Component {
   async componentDidMount() {
     try {
       const countriesResponse = await fetch(
-        "https://covid19.mathdro.id/api/countries"
+        "https://api.covid19api.com/summary "
       );
       const countriesArray = await countriesResponse.json();
-
-      const countries = countriesArray.countries.map((country) => country.name);
-
+      // console.log(countriesArray.Countries);
+      const countries = countriesArray.Countries.map(
+        (country) => country.Country
+      );
+      // console.log(countries);
       this.setState({
         countries: countries,
       });
