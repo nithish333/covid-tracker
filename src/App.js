@@ -133,6 +133,19 @@ class App extends React.Component {
           deaths={deaths}
           chartType={chartType}
         />
+        <p
+          className="footer"
+          style={{
+            textAlign: "center",
+            width: "100%",
+            marginTop: "50px",
+            borderTop: "1px solid #f3f3f3",
+            padding: "20px",
+            fontSize: "25px",
+          }}
+        >
+          Created by <b>Nithish</b>
+        </p>
       </div>
     );
   }
